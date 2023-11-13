@@ -1,0 +1,21 @@
+<h2>New game</h2>
+
+<br>
+
+<div class="letters-container">
+  <% @letters.each do |letter| %>
+    <p class="shadow letter"><%= letter %></p>
+  <% end %>
+</div>
+
+<br>
+
+<form class="form-inline" action="/score" method="post" data-turbo="false">
+  <div class="form-group mb-2">
+    <label for="input-word">Make a word using the letters above:</label>
+    <input type="text" class="form-control ml-5" id="input-word" name="word" placeholder="My longest word...">
+  </div>
+  <button type="submit" class="btn btn-primary mb-2 mx-3">Submit</button>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
+</form>

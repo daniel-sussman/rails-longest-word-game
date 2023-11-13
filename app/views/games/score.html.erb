@@ -1,0 +1,12 @@
+<h1>Result</h1>
+<h4>
+  <% if !@word_valid %>
+    Sorry, but <strong><%= @word %></strong> can't be built out of <%= params[:letters].split(' ').join(', ') %>.
+  <% elsif !@word_in_dict %>
+    Sorry, but '<strong><%= @word %></strong>' isn't a word in English.
+  <% else %>
+    Your score is <strong><%= @score %></strong>!
+  <% end %>
+</h4>
+<h4>You've played <strong><%= cookies[:user_games] %></strong> game<%= 's' unless cookies[:user_games] == 1 %>. Your total score is <strong><%= cookies[:user_score] %></strong>.</h4>
+<h4><%= link_to "Play again!", "new" %></h4>
